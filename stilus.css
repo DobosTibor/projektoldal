@@ -1,75 +1,60 @@
 body {
-    font-family: Arial,  sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     background-image: linear-gradient(to bottom, #6d6d6d, #414141);
     color: #333;
     display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* header {
-    text-align: center;
-    background-color: #2c2c2c;
+header {
+    animation: slowFade 5s infinite;
     color: white;
-    padding: 10px 0;
-} */
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
+}
 
 main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     padding: 20px;
 }
 
+/* FELSŐ RÉSZ: KÉP + LINKEK */
+.top {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
 aside {
-    padding: 40px;
-    width: 250px;
+    width: 200px;
 }
 
 aside img {
     width: 100%;
     border-radius: 10px;
-    margin-bottom: 10px;
 }
 
-article {
-    
-    justify-content: center;
+/* LINKEK */
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-table {
-    border-collapse: collapse;
-    margin-top: 10px;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-thead {
-    background-color:#2c2c2c;
+h2 {
     color: white;
+    text-shadow: 2px 2px 5px black;
+    font-size: 30px;
 }
 
-tbody tr:nth-child(even) {
-    background-color: rgb(92, 91, 91);
-}
-
-tbody tr:nth-child(odd) {
-    background-color: rgb(109, 109, 109); */
-}
-
-td, th {
-    text-align: left;
-    padding: 10px;
-}
-
-td:first-child {
-    font-weight: bold;
-    color: #333;
-}
+/* GOMB */
 .btn {
     display: inline-block;
-    background-color:  #2c2c2c2;
+    background-color: #2c2c2c;
     color: white;
     text-decoration: none;
     padding: 8px 15px;
@@ -82,60 +67,164 @@ td:first-child {
     background-color: rgb(68, 68, 68);
 }
 
+/* TÁBLÁZATOK */
+.tables {
+    display: flex;
+    gap: 20px;
+}
 
+.tables article {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 70%;
+}
+
+thead {
+    background-color: #2c2c2c;
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgb(92, 91, 91);
+}
+
+tbody tr:nth-child(odd) {
+    background-color: rgb(109, 109, 109);
+}
+
+td, th {
+    text-align: left;
+    padding: 10px;
+}
+
+td:first-child {
+    font-weight: bold;
+    color: #222;
+}
+
+tr:hover td {
+    background-color: #666;
+    transition: background-color 0.3s ease;
+}
+
+/* BETŰTÍPUSOK */
+.shadows-into-light-regular, h2 {
+    font-family: "Shadows Into Light", cursive;
+    font-weight: 500;
+}
+
+th {
+    font-family: "Google Sans Code", monospace;
+    font-weight: 500;
+}
+
+/* FOOTER */
 footer {
     background-color: #2c2c2c;
     color: white;
-    padding: 10px 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     padding: 10px;
-    border-radius: 15px;
-}
-hobby{
-    
-    justify-content:center;
     display: flex;
-}
-table img{
+    justify-content: center;
     border-radius: 15px;
+    margin-top: auto;
 }
-.shadows-into-light-regular,h2 {
-    font-family: "Shadows Into Light", cursive;
-    font-weight: 500;
-    font-style: normal;
-  }
-  p{
 
-  }
-th {
-    font-family: "Google Sans Code", monospace;
-    font-optical-sizing: auto;
-    font-weight: <weight>;
-    font-style: normal;
-  }
-  h2{
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 200px;
+}
+
+.card {
+  perspective: 1000px;
+  height: 260px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.card-front {
+  background: #2c2c2c;
+}
+
+.card-front img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+}
+
+.card-front h2 {
     color: white;
-    text-shadow: 2px 2px 5px black;
-    font-size: 30px;
-  }
-  tr:hover td {
-  background-color: #666;
-  transition: background-color 0.3s ease;
+  text-align: center;
+  margin: 10px 0;
 }
 
-  @keyframes slowFade {
+.card-back {
+  background: #333;
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-back a {
+  padding: 10px 20px;
+  background: #007bff;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.card-back a:hover {
+  background: #0056b3;
+}
+
+/* ANIMÁCIÓ */
+@keyframes slowFade {
     0% { background-color: black; }
-    50% { background-color: #555555; } /* középszürke */
+    50% { background-color: #555555; }
     100% { background-color: black; }
-  }
-  
-  header {
-    animation: slowFade 5s infinite; /* 10 másodperc alatt megy végig */
-    color: white;
-    padding: 20px;
-    text-align: center;
-    transition: color 10s ease;
-    border-radius: 15px;
-  }
+}
+
+/* MOBIL */
+@media (max-width: 768px) {
+    .top {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tables {
+        flex-direction: column;
+    }
+}
